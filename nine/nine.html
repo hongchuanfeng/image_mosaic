@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link id="favicon" rel="icon" type="image/png" href="../favicon.ico">
+    <title>在线免费图片马赛克 - 3x3网格图片分割工具</title>
+    <meta name="keywords" content="图片网格分割,照片分割,网格切割,社交媒体网格,图片分割工具,网格制作器" />
+    <meta name="description" content="免费在线图片网格分割工具，支持多种网格格式、自定义分割、社交媒体网格创建和批量处理" />
+    <link rel="canonical" href="https://mosaic.openai2025.com/nine/nine.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SRJM5F5CT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4SRJM5F5CT');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7274710287377352"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css.css">
+    <link rel="stylesheet" href="nine.css">
+    <style>
+        body { min-height: 120vh; }
+        body { background-color: transparent; }
+        .navbar { position: relative; z-index: auto; }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; }
+        .nav-menu { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-link { padding: 0; display: inline-flex; align-items: center; }
+        .nav-toggle { display: none; background: transparent; border: none; padding: 8px; cursor: pointer; }
+        .hamburger { display: block; width: 22px; height: 2px; background: rgba(255, 255, 255, 0.9); margin: 5px 0; transition: transform .25s ease, opacity .25s ease; }
+        .nav-overlay { display: none; }
+
+        @media (min-width: 769px) {
+            .nav-link { padding: 5px 12px; }
+            .nav-menu { gap: 8px; }
+            .nav-item { display: inline-block; }
+        }
+
+        @media (min-width: 1025px) {
+            html, body { min-width: 1600px; }
+            .header-div, .main-div, .navbar, .nav-container { max-width: none; }
+        }
+
+        .lang-switch {
+            position: relative;
+            z-index: 2;
+            text-decoration: none;
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.95);
+            margin-left: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            font-weight: 500;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .lang-switch:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        .lang-switch .ls-left {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-switch .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .lang-switch .divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .lang-switch .label {
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .lang-switch .ls-right {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 4px;
+        }
+        .lang-switch .arrow {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease;
+        }
+        .lang-switch:hover .arrow {
+            transform: translateY(2px);
+        }
+        @media (max-width: 768px) {
+            .lang-switch {
+                position: fixed;
+                right: 12px;
+                height: 38px;
+                padding: 0 14px;
+                z-index: 10002;
+                font-size: 13px;
+            }
+            .lang-switch .badge {
+                font-size: 11px;
+                padding: 3px 8px;
+            }
+            .lang-switch .label {
+                font-size: 12px;
+            }
+        }
+
+        .nav-item { 
+            position: relative; 
+            display: inline-block;
+        }
+        .dropdown-toggle { 
+            cursor: pointer; 
+            user-select: none;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            min-width: 600px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.15);
+            border-radius: 8px;
+            padding: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            pointer-events: none;
+            overflow: visible;
+            max-height: none;
+            height: auto;
+        }
+        .nav-item:hover .dropdown-menu,
+        .nav-item.dropdown-open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .dropdown-menu .nav-link {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            background: transparent;
+            border-radius: 6px;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+            margin: 0;
+            text-align: center;
+            cursor: pointer;
+        }
+        .dropdown-menu .nav-link:hover {
+            background: #f5f5f5;
+            color: #007bff;
+        }
+        .dropdown-toggle::after {
+            content: ' ▼';
+            font-size: 10px;
+            margin-left: 4px;
+            opacity: 0.7;
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .dropdown-menu {
+                min-width: 480px;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .dropdown-menu {
+                min-width: 600px;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .dropdown-toggle::before,
+        .nav-link[href="../about.html"]::before,
+        .nav-link[href="../contact.html"]::before {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 16px;
+            line-height: 1;
+        }
+        .dropdown-toggle::before {
+            content: "🤖";
+        }
+        .nav-link[href="../about.html"]::before {
+            content: "ℹ️";
+        }
+        .nav-link[href="../contact.html"]::before {
+            content: "📧";
+        }
+        
+        @media (min-width: 769px) {
+            .nav-item .dropdown-toggle {
+                color: rgba(255, 255, 255, 0.9);
+                background-color: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                padding: 8px 16px;
+                display: inline-block;
+                font-weight: 500;
+            }
+            .nav-item:hover .dropdown-toggle {
+                background-color: rgba(255, 255, 255, 0.15);
+                color: #fff;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-div, .navbar, .nav-container { overflow: visible !important; }
+            .header-div, .navbar, .nav-container { transform: none !important; -webkit-transform: none !important; }
+            .header-div, .navbar, .nav-container { contain: unset !important; }
+            .nav-toggle { display: inline-block; }
+            .nav-menu {
+                position: fixed; top: 0; bottom: 0; left: 0; width: 85%; max-width: 420px;
+                background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,.12);
+                display: block; padding: calc(env(safe-area-inset-top,0) + 12px) 12px 24px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+                transform: translateX(-100%); transition: transform .25s ease; z-index: 10001; will-change: transform;
+            }
+            .nav-menu .nav-link { display: flex; align-items: center; padding: 0; border-bottom: 1px solid #f2f2f2; }
+            .nav-menu.nav-menu-active { transform: translateX(0); }
+
+            .nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 10000; display: block; }
+            .nav-overlay.nav-overlay-active { opacity: 1; pointer-events: auto; }
+
+            .nav-toggle.nav-toggle-active .hamburger:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .nav-toggle.nav-toggle-active .hamburger:nth-child(2) { opacity: 0; }
+            .nav-toggle.nav-toggle-active .hamburger:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+            .nav-menu .nav-link { margin: 10px 0; }
+            
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid #f2f2f2;
+            }
+            .dropdown-toggle {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding: 16px 20px;
+                color: #333;
+                background: white;
+                border: none;
+                text-align: left;
+                font-size: 1rem;
+                font-weight: 500;
+                margin: 0;
+            }
+            .dropdown-menu {
+                position: static;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                transform: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                transition: opacity 0.3s ease, max-height 0.3s ease;
+                border-radius: 0;
+                display: block !important;
+                grid-template-columns: 1fr !important;
+                min-width: auto !important;
+            }
+            .nav-item.dropdown-open .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                max-height: 2000px;
+            }
+            .dropdown-menu .nav-link {
+                padding: 12px 20px 12px 40px;
+                font-size: 14px;
+                border-bottom: 1px solid #e9ecef;
+                color: #333;
+                text-align: left;
+            }
+            .dropdown-menu .nav-link:hover {
+                background: #e9ecef;
+            }
+            
+            .dropdown-toggle::before,
+            .nav-link[href="about.html"]::before,
+            .nav-link[href="contact.html"]::before {
+                display: inline-block;
+                margin-right: 8px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-div">
+        <nav class="navbar">
+            <div class="nav-container">
+                <button class="nav-toggle" id="navToggle" aria-label="切换导航菜单">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <div class="nav-item">
+                        <span class="nav-link dropdown-toggle">图片AI工具</span>
+                        <div class="dropdown-menu">
+                            <a href="../index.html" class="nav-link">图片马赛克</a>
+                            <a href="../crop/crop.html" class="nav-link">裁剪图片</a>
+                            <a href="../convert/convert.html" class="nav-link">格式转换</a>
+                            <a href="../icon/icon.html" class="nav-link">图标生成器</a>
+                            <a href="../compress/compress.html" class="nav-link">压缩图片</a>
+                            <a href="../blank/blank.html" class="nav-link">灰度处理</a>
+                            <a href="../watermark/watermark.html" class="nav-link">添加水印</a>
+                            <a href="../removewm/removewm.html" class="nav-link">去除水印</a>
+                            <a href="nine.html" class="nav-link">图片网格</a>
+                            <a href="../text/text.html" class="nav-link">文字转图片</a>
+                            <a href="../join/join.html" class="nav-link">合并图片</a>
+                            <a href="../textToimage/textToimage.html" class="nav-link">添加文字</a>
+                            <a href="../corner/corner.html" class="nav-link">圆角处理</a>
+                            <a href="../expand/expand.html" class="nav-link">放大图片</a>
+                            <a href="../old/old.html" class="nav-link">照片修复</a>
+                            <a href="../bg/bg.html" class="nav-link">图片上色</a>
+                            <a href="../removebg/removebg.html" class="nav-link">去除背景</a>
+                            <a href="../changebg/changebg.html" class="nav-link">更换背景</a>
+                            <a href="../rotate/rotate.html" class="nav-link">🔄 图片旋转</a>
+                            <a href="../exif/exif.html" class="nav-link">📷 查看EXIF</a>
+                        </div>
+                    </div>
+                    <a href="../about.html" class="nav-link">关于</a>
+                    <a href="../contact.html" class="nav-link">联系我们</a>
+                </div>
+                <a class="lang-switch" href="https://mosaic.chdaoai.com/nine/nine.html" aria-label="切换到中文版本" target="_blank" rel="nofollow noopener noreferrer">
+                    <span class="ls-left">
+                        <span class="badge">English</span>
+                    </span>
+                    <span class="ls-right"><i class="arrow"></i></span>
+                </a>
+            </div>
+        </nav>
+        <h1 class="header-title">3x3网格分割</h1>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <main class="main-container">
+        <!-- File upload area -->
+        <section class="upload-section">
+            <div class="upload-area">
+                <label for="fileInput" class="file-label">
+                    <div class="upload-icon">✂️</div>
+                    <div class="upload-text">点击选择图片或拖放到此处</div>
+                    <div class="upload-hint">支持 JPG、PNG、GIF、BMP、WebP 格式</div>
+                    <div class="upload-hint">支持批量处理，最多10张图片</div>
+                </label>
+                <input type="file" id="fileInput" accept="image/*" multiple />
+            </div>
+        </section>
+
+        <!-- Split settings area -->
+        <section class="settings-section" id="settingsSection" style="display: none;">
+            <div class="settings-container">
+                <h3>分割设置</h3>
+                
+                <div class="settings-grid">
+                    <!-- 网格类型 -->
+                    <div class="setting-group">
+                        <label class="setting-label">网格类型</label>
+                        <div class="grid-types">
+                            <label class="radio-label">
+                                <input type="radio" name="gridType" value="preset" checked />
+                                <span class="radio-mark"></span>
+                                预设网格
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gridType" value="custom" />
+                                <span class="radio-mark"></span>
+                                自定义网格
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 预设网格 -->
+                    <div class="setting-group" id="presetGridGroup">
+                        <label class="setting-label">预设网格</label>
+                        <div class="preset-grids">
+                            <div class="grid-option" data-rows="1" data-cols="1">
+                                <div class="grid-preview grid-1x1"></div>
+                                <span>1×1</span>
+                            </div>
+                            <div class="grid-option" data-rows="1" data-cols="2">
+                                <div class="grid-preview grid-1x2"></div>
+                                <span>1×2</span>
+                            </div>
+                            <div class="grid-option" data-rows="2" data-cols="1">
+                                <div class="grid-preview grid-2x1"></div>
+                                <span>2×1</span>
+                            </div>
+                            <div class="grid-option" data-rows="2" data-cols="2">
+                                <div class="grid-preview grid-2x2"></div>
+                                <span>2×2</span>
+                            </div>
+                            <div class="grid-option" data-rows="1" data-cols="3">
+                                <div class="grid-preview grid-1x3"></div>
+                                <span>1×3</span>
+                            </div>
+                            <div class="grid-option" data-rows="3" data-cols="1">
+                                <div class="grid-preview grid-3x1"></div>
+                                <span>3×1</span>
+                            </div>
+                            <div class="grid-option active" data-rows="3" data-cols="3">
+                                <div class="grid-preview grid-3x3"></div>
+                                <span>3×3（标准网格）</span>
+                            </div>
+                            <div class="grid-option" data-rows="2" data-cols="3">
+                                <div class="grid-preview grid-2x3"></div>
+                                <span>2×3</span>
+                            </div>
+                            <div class="grid-option" data-rows="3" data-cols="2">
+                                <div class="grid-preview grid-3x2"></div>
+                                <span>3×2</span>
+                            </div>
+                            <div class="grid-option" data-rows="4" data-cols="4">
+                                <div class="grid-preview grid-4x4"></div>
+                                <span>4×4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 自定义网格设置 -->
+                    <div class="setting-group" id="customGridGroup" style="display: none;">
+                        <label class="setting-label">自定义网格</label>
+                        <div class="custom-grid-controls">
+                            <div class="grid-input-group">
+                                <label>行数</label>
+                                <input type="number" id="customRows" min="1" max="10" value="3" />
+                            </div>
+                            <div class="grid-input-group">
+                                <label>列数</label>
+                                <input type="number" id="customCols" min="1" max="10" value="3" />
+                            </div>
+                        </div>
+                        <div class="custom-grid-preview" id="customGridPreview">
+                            <!-- Custom grid preview will be generated here -->
+                        </div>
+                    </div>
+
+                    <!-- 分割选项 -->
+                    <div class="setting-group">
+                        <label class="setting-label">分割选项</label>
+                        <div class="cut-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="addBorders" />
+                                <span class="checkmark"></span>
+                                添加边框
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="addNumbers" />
+                                <span class="checkmark"></span>
+                                添加编号
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="addShadows" />
+                                <span class="checkmark"></span>
+                                添加阴影
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="keepAspectRatio" checked />
+                                <span class="checkmark"></span>
+                                保持宽高比
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 边框设置 -->
+                    <div class="setting-group" id="borderSettings" style="display: none;">
+                        <label class="setting-label">边框设置</label>
+                        <div class="border-controls">
+                            <div class="border-color-group">
+                                <label>边框颜色</label>
+                                <input type="color" id="borderColor" value="#ffffff" />
+                            </div>
+                            <div class="border-width-group">
+                                <label>边框宽度</label>
+                                <input type="range" id="borderWidth" min="1" max="20" value="2" />
+                                <span id="borderWidthValue">2px</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 编号设置 -->
+                    <div class="setting-group" id="numberSettings" style="display: none;">
+                        <label class="setting-label">编号设置</label>
+                        <div class="number-controls">
+                            <div class="number-position-group">
+                                <label>编号位置</label>
+                                <select id="numberPosition">
+                                    <option value="top-left">左上</option>
+                                    <option value="top-right">右上</option>
+                                    <option value="bottom-left">左下</option>
+                                    <option value="bottom-right">右下</option>
+                                    <option value="center">居中</option>
+                                </select>
+                            </div>
+                            <div class="number-style-group">
+                                <label>编号样式</label>
+                                <div class="number-style-options">
+                                    <label class="radio-label">
+                                        <input type="radio" name="numberStyle" value="circle" checked />
+                                        <span class="radio-mark"></span>
+                                        圆形
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="numberStyle" value="square" />
+                                        <span class="radio-mark"></span>
+                                        方形
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="numberStyle" value="text" />
+                                        <span class="radio-mark"></span>
+                                        仅文字
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 输出设置 -->
+                    <div class="setting-group">
+                        <label class="setting-label">输出设置</label>
+                        <div class="output-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="generateZip" checked />
+                                <span class="checkmark"></span>
+                                生成ZIP压缩包
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="generatePreview" checked />
+                                <span class="checkmark"></span>
+                                生成预览
+                            </label>
+                        </div>
+                        <select id="outputFormat" class="format-select">
+                            <option value="original">保持原始格式</option>
+                            <option value="jpeg">JPEG（.jpg）</option>
+                            <option value="png">PNG（.png）</option>
+                            <option value="webp">WebP（.webp）</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="cutImagesBtn" class="btn btn-primary">开始分割</button>
+                    <button id="previewBtn" class="btn btn-secondary">预览</button>
+                    <button id="clearBtn" class="btn btn-outline">清除列表</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image list area -->
+        <section class="images-section" id="imagesSection" style="display: none;">
+            <div class="images-container">
+                <h3>图片列表</h3>
+                <div class="images-grid" id="imagesGrid">
+                    <!-- Image items will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress area -->
+        <section class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-container">
+                <h3>处理进度</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">准备中...</div>
+            </div>
+        </section>
+
+        <!-- Results area -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-container">
+                <h3>结果</h3>
+                <div class="results-actions">
+                    <button id="downloadAllBtn" class="btn btn-success">下载全部</button>
+                    <button id="downloadZipBtn" class="btn btn-info">下载ZIP</button>
+                    <button id="downloadPreviewBtn" class="btn btn-warning">下载预览</button>
+                </div>
+                <div class="results-grid" id="resultsGrid">
+                    <!-- Split results will be displayed here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Feature description and usage guide section -->
+    <section class="info-section">
+        <div class="info-container">
+            <!-- Feature description -->
+            <div class="info-card">
+                <h2>📋 功能说明</h2>
+                <p>我们的3x3网格分割工具提供强大的图片分割功能，将图片分割成多个网格部分：</p>
+                <ul>
+                    <li><strong>多种网格格式：</strong> 支持预设网格（1x1、2x2、3x3、4x4等）和自定义行列配置</li>
+                    <li><strong>批量处理：</strong> 一次最多分割10张图片</li>
+                    <li><strong>自定义选项：</strong> 为分割图片添加边框、编号和阴影</li>
+                    <li><strong>输出格式：</strong> 保持原始格式或转换为JPEG、PNG、WebP</li>
+                    <li><strong>ZIP下载：</strong> 将所有分割图片打包为ZIP压缩包，方便下载</li>
+                </ul>
+            </div>
+
+            <!-- 使用指南 -->
+            <div class="info-card">
+                <h2>💡 使用指南</h2>
+                <ol>
+                    <li>点击"选择图片"或拖放图片上传（最多10张图片）</li>
+                    <li>选择网格类型：预设网格或自定义网格</li>
+                    <li>选择预设网格（如3x3）或设置自定义行数和列数</li>
+                    <li>启用可选功能：添加边框、添加编号、添加阴影</li>
+                    <li>如果启用了边框，配置边框设置（颜色和宽度）</li>
+                    <li>如果启用了编号，配置编号设置（位置和样式）</li>
+                    <li>选择输出格式（保持原始、JPEG、PNG或WebP）</li>
+                    <li>点击"开始分割"处理图片</li>
+                    <li>下载单个结果、下载全部为ZIP或下载预览</li>
+                </ol>
+            </div>
+
+            <!-- 使用案例 -->
+            <div class="info-card">
+                <h2>🎨 使用案例</h2>
+                <div class="use-cases">
+                    <div class="use-case-item">
+                        <strong>社交媒体：</strong> 将图片分割为3x3或2x3网格，用于Instagram帖子
+                    </div>
+                    <div class="use-case-item">
+                        <strong>照片拼贴：</strong> 创建基于网格的照片拼贴，用于演示或作品集
+                    </div>
+                    <div class="use-case-item">
+                        <strong>图片整理：</strong> 将大图片分割成较小的部分，便于整理
+                    </div>
+                    <div class="use-case-item">
+                        <strong>创意项目：</strong> 使用网格分割进行艺术创作和设计项目
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video tutorial section -->
+    <section class="examples-section">
+        <div class="examples-container">
+            <h2>📹 视频教程</h2>
+            <div class="examples-grid">
+                <div class="example-card example-video-card">
+                    <h3>如何使用3x3网格分割工具</h3>
+                    <div class="example-video-wrapper">
+                        <video src="/static/image/nine.mp4" controls class="example-video" poster="">
+                            您的浏览器不支持视频标签。
+                        </video>
+                    </div>
+                    <p class="example-description">
+                        <strong>视频指南：</strong> 观看本教程视频，了解如何高效使用我们的3x3网格分割工具。查看将图片分割为网格、配置网格设置、添加边框和编号以及下载结果的分步说明。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Instructions section (keeping original) -->
+    <section class="instructions-section">
+        <div class="instructions-container">
+            <h3>使用说明</h3>
+            <div class="instructions-content">
+                <div class="instruction-item">
+                    <h4>3x3网格分割</h4>
+                    <p>将一张图片分割成9张小图片，非常适合社交媒体分享，展示更多细节</p>
+                </div>
+                <div class="instruction-item">
+                    <h4>多种网格选项</h4>
+                    <p>支持多种预设网格，如2x2、3x3、4x4，以及自定义行数和列数</p>
+                </div>
+                <div class="instruction-item">
+                    <h4>边框和编号</h4>
+                    <p>为分割图片添加边框和编号，便于排序和识别</p>
+                </div>
+                <div class="instruction-item">
+                    <h4>批量处理</h4>
+                    <p>一次上传多张图片，批量生成网格分割，提高效率</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership plans section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2>💎 会员套餐</h2>
+            <div class="pricing-grid">
+                <!-- 月度套餐 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>月度套餐</h3>
+                        <div class="price">$6.6<span>/月</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 无限网格分割</li>
+                        <li>✓ 所有网格格式</li>
+                        <li>✓ 批量处理（最多20张图片）</li>
+                        <li>✓ 优先客服支持</li>
+                        <li>✓ 无广告体验</li>
+                    </ul>
+                    <button class="pricing-btn">立即订阅</button>
+                </div>
+
+                <!-- 季度套餐 -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">超值选择</div>
+                    <div class="pricing-header">
+                        <h3>季度套餐</h3>
+                        <div class="price">$16.66<span>/3个月</span></div>
+                        <div class="price-save">节省17%</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 包含月度套餐所有功能</li>
+                        <li>✓ 无限批量处理</li>
+                        <li>✓ 高级网格选项</li>
+                        <li>✓ API访问</li>
+                        <li>✓ 自定义网格预设</li>
+                    </ul>
+                    <button class="pricing-btn">立即订阅</button>
+                </div>
+
+                <!-- 年度套餐 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>年度套餐</h3>
+                        <div class="price">$56.66<span>/年</span></div>
+                        <div class="price-save">节省33%</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 包含季度套餐所有功能</li>
+                        <li>✓ 无限存储</li>
+                        <li>✓ 白标选项</li>
+                        <li>✓ 专属支持</li>
+                        <li>✓ 新功能抢先体验</li>
+                    </ul>
+                    <button class="pricing-btn">立即订阅</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter subscription section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2>📧 订阅我们的 newsletter</h2>
+            <p>获取使用指南、使用案例和独家会员优惠</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="输入您的邮箱地址" required class="newsletter-input">
+                <button type="submit" class="newsletter-btn">订阅</button>
+            </form>
+            <p class="newsletter-note">订阅后，您将收到使用指南、使用案例和会员信息。</p>
+        </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">图片马赛克</a></li>
+                        <li><a href="../crop/crop.html">裁剪图片</a></li>
+                        <li><a href="../convert/convert.html">格式转换</a></li>
+                        <li><a href="../icon/icon.html">图标生成器</a></li>
+                        <li><a href="nine.html">图片网格</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <p>传道AI提供前沿的图像处理工具，帮助您轻松创建、编辑和增强图像。</p>
+                    <a href="../about.html" class="footer-link">了解更多</a>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <p>邮箱：<a href="mailto:support@openai2025.com">support@openai2025.com</a></p>
+                    <p>我们随时为您解答任何问题或疑虑。</p>
+                    <a href="../contact.html" class="footer-link">联系我们</a>
+                </div>
+                <div class="footer-column">
+                    <h3>法律信息</h3>
+                    <ul class="footer-links">
+                        <li><a href="../privacy.html">隐私政策</a></li>
+                        <li><a href="../terms.html">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 友情链接 -->
+            <div class="friendship-links">
+                <h3>友情链接</h3>
+                <div class="links-grid">
+                    <a href="https://www.removewatermarker.com/" target="_blank" rel="noopener noreferrer">视频去水印字幕工具</a>
+                    <a href="https://www.chdaoai.com/zh/text-to-subtitles" target="_blank" rel="noopener noreferrer">在线文字转字幕AI工具</a>
+                    <a href="https://www.openai2025.com/" target="_blank" rel="noopener noreferrer">传道PDF图片条码工具</a>
+                    <a href="https://www.base64.club/" target="_blank" rel="noopener noreferrer">在线base64工具</a>
+                    <a href="https://www.zorezoro.com/" target="_blank" rel="noopener noreferrer">NBA趣事</a>
+                    <a href="https://www.icebreakgame.com/" target="_blank" rel="noopener noreferrer">在线免费游戏</a>
+                    <a href="https://food.zorezoro.com/" target="_blank" rel="noopener noreferrer">中国菜系大全</a>
+                    <a href="https://gf.zorezoro.com/" target="_blank" rel="noopener noreferrer">中国功夫大全</a>
+                    <a href="https://china.zorezoro.com/" target="_blank" rel="noopener noreferrer">中国24史</a>
+                 
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>版权所有 © 传道AI。保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    </main>
+
+    <script>
+        // Navigation menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            const navOverlay = document.getElementById('navOverlay');
+            const navOriginalContainer = navMenu ? navMenu.parentElement : null;
+            
+            // Check if mobile device
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            function toggleMenu() {
+                if (isMobile()) {
+                    console.log('Toggle menu clicked');
+                    navMenu.classList.toggle('nav-menu-active');
+                    navToggle.classList.toggle('nav-toggle-active');
+                    navOverlay.classList.toggle('nav-overlay-active');
+                    
+                    // Ensure menu displays by removing hidden transform
+                    if (navMenu.classList.contains('nav-menu-active')) {
+                        navMenu.style.transform = 'translateX(0)';
+                        // Disable page scrolling
+                        document.body.classList.add('menu-open');
+                        document.documentElement.classList.add('menu-open');
+                        
+                        // Force menu scroll properties
+                        navMenu.style.overflowY = 'scroll';
+                        navMenu.style.overflowX = 'hidden';
+                        navMenu.style.height = '100vh';
+                        navMenu.style.touchAction = 'pan-y';
+                        navMenu.style.webkitOverflowScrolling = 'touch';
+                        
+                        // Diagnostics: Calculate total items height
+                        const links = navMenu.querySelectorAll('.nav-link');
+                        let totalItemsHeight = 0;
+                        links.forEach(el => { totalItemsHeight += el.offsetHeight; });
+                        console.log('Menu opened with scroll enabled');
+                        console.log('Menu height:', navMenu.clientHeight, 'Content height:', navMenu.scrollHeight, 'Items sum:', totalItemsHeight, 'Count:', links.length);
+                        console.log('Menu computed overflow-y:', getComputedStyle(navMenu).overflowY);
+
+                        // Force add spacer to ensure scrollability
+                        let spacer = document.getElementById('__nav_spacer__');
+                        if (spacer && spacer.parentElement === navMenu) {
+                            navMenu.removeChild(spacer);
+                        }
+                        spacer = document.createElement('div');
+                        spacer.id = '__nav_spacer__';
+                        spacer.style.height = '300px';
+                        spacer.style.width = '100%';
+                        spacer.style.display = 'block';
+                        spacer.style.pointerEvents = 'none';
+                        spacer.style.backgroundColor = 'transparent';
+                        spacer.style.flexShrink = '0';
+                        navMenu.appendChild(spacer);
+                        
+                        // Force re-calculate layout
+                        navMenu.offsetHeight;
+                        
+                        // Output height again for verification
+                        setTimeout(function(){
+                            console.log('After spacer -> Menu height:', navMenu.clientHeight, 'Content height:', navMenu.scrollHeight);
+                            console.log('Spacer height:', spacer.offsetHeight);
+                            console.log('Can scroll:', navMenu.scrollHeight > navMenu.clientHeight);
+                            console.log('Scroll top:', navMenu.scrollTop, 'Max scroll:', navMenu.scrollHeight - navMenu.clientHeight);
+                        }, 50);
+                    } else {
+                        navMenu.style.transform = 'translateX(-100%)';
+                        // Restore page scrolling
+                        document.body.classList.remove('menu-open');
+                        document.documentElement.classList.remove('menu-open');
+                        // Clean up placeholder
+                        const spacer = document.getElementById('__nav_spacer__');
+                        if (spacer && spacer.parentElement === navMenu) {
+                            navMenu.removeChild(spacer);
+                        }
+                    }
+                    
+                    console.log('Menu classes:', navMenu.className);
+                }
+            }
+            
+            function closeMenu() {
+                if (isMobile()) {
+                    navMenu.classList.remove('nav-menu-active');
+                    navToggle.classList.remove('nav-toggle-active');
+                    navOverlay.classList.remove('nav-overlay-active');
+                    navMenu.style.transform = 'translateX(-100%)';
+                    // Restore page scrolling
+                    document.body.classList.remove('menu-open');
+                    document.documentElement.classList.remove('menu-open');
+                }
+            }
+
+            // Promote menu to direct child of body on mobile to avoid any parent stacking context/clipping affecting hierarchy
+            function promoteMenuForMobile(){
+                if (!navMenu) return;
+                if (isMobile()) {
+                    if (navMenu.parentElement !== document.body) {
+                        document.body.appendChild(navMenu);
+                    }
+                } else if (navOriginalContainer && navMenu.parentElement !== navOriginalContainer) {
+                    navOriginalContainer.appendChild(navMenu);
+                }
+            }
+            promoteMenuForMobile();
+            
+            // Add event listeners
+            if (navToggle) {
+                navToggle.addEventListener('click', toggleMenu);
+            }
+            
+            if (navOverlay) {
+                navOverlay.addEventListener('click', closeMenu);
+            }
+            
+            // Mobile reliable navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                let startX = 0, startY = 0, startT = 0;
+                const threshold = 8;
+                function onStart(e){ if(!isMobile()) return; const t=e.touches?e.touches[0]:e; startX=t.clientX; startY=t.clientY; startT=Date.now(); }
+                function onEnd(e){ if(!isMobile()) return; const t=e.changedTouches?e.changedTouches[0]:e; const dx=Math.abs(t.clientX-startX); const dy=Math.abs(t.clientY-startY); const dt=Date.now()-startT; if(dx<threshold&&dy<threshold&&dt<1500){ const href=link.getAttribute('href'); if(href){ e.preventDefault(); e.stopPropagation(); window.location.assign(href); } } }
+                link.addEventListener('touchstart', onStart, {passive:true, capture:true});
+                link.addEventListener('touchend', onEnd, {passive:false, capture:true});
+                link.addEventListener('mousedown', onStart, true);
+                link.addEventListener('mouseup', onEnd, true);
+                link.addEventListener('click', function(e){ if(!isMobile()) return; const href=link.getAttribute('href'); if(href){ e.preventDefault(); e.stopPropagation(); window.location.assign(href);} }, true);
+            });
+            
+            // Close menu when window size changes
+            window.addEventListener('resize', function() {
+                if (!isMobile()) {
+                    closeMenu();
+                }
+                promoteMenuForMobile();
+            });
+            
+            // Add scroll listener to ensure menu position is correct
+            window.addEventListener('scroll', function() {
+                if (isMobile() && navMenu.classList.contains('nav-menu-active')) {
+                    // When menu is open, ensure position is correct
+                    navMenu.style.top = '0';
+                }
+            });
+            
+            // PC dropdown logic
+            const navItem = document.querySelector('.nav-item');
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            
+            if (!isMobile() && navItem && dropdownToggle && dropdownMenu) {
+                let hideTimer = null;
+
+                function showDropdown() {
+                    if (hideTimer) {
+                        clearTimeout(hideTimer);
+                        hideTimer = null;
+                    }
+                    navItem.classList.add('dropdown-open');
+                }
+
+                function hideDropdown() {
+                    hideTimer = setTimeout(function() {
+                        navItem.classList.remove('dropdown-open');
+                    }, 200);
+                }
+
+                navItem.addEventListener('mouseenter', showDropdown);
+                dropdownMenu.addEventListener('mouseenter', showDropdown);
+                navItem.addEventListener('mouseleave', function(e) {
+                    if (e.relatedTarget && dropdownMenu.contains(e.relatedTarget)) {
+                        return;
+                    }
+                    hideDropdown();
+                });
+                dropdownMenu.addEventListener('mouseleave', function(e) {
+                    if (e.relatedTarget && navItem.contains(e.relatedTarget)) {
+                        return;
+                    }
+                    hideDropdown();
+                });
+            }
+            
+            // Mobile dropdown toggle
+            if (isMobile() && dropdownToggle) {
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navItem.classList.toggle('dropdown-open');
+                });
+            }
+            
+            console.log('Menu initialized with scroll listener');
+        });
+    </script>
+    <script src="nine.js"></script>
+</body>
+</html>
+

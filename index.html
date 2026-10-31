@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link id="favicon" rel="icon" type="image/png" href="favicon.ico">
+    <title>在线免费图片马赛克 - 免费图片马赛克工具</title>
+    <meta name="keywords" content="在线免费图片马赛克, 马赛克工具, 像素化图片, 马赛克编辑器, 隐私模糊, 像素艺术" />
+    <meta name="description" content="在线免费图片马赛克工具，支持全图马赛克、矩形区域和画笔，一键下载。" />
+    <link rel="canonical" href="https://mosaic.openai2025.com/index.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4SRJM5F5CT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4SRJM5F5CT');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7274710287377352"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        /* 页面长度适当加长 */
+        body { min-height: 120vh; }
+        .main-div { padding-bottom: 48px; }
+        /* 基础布局 */
+        .navbar { position: relative; z-index: auto; }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; }
+        .nav-menu { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-link { padding: 0; display: inline-flex; align-items: center; }
+        .nav-ico { display: inline-block; margin-right: 0; font-size: 16px; line-height: 1; }
+        .nav-toggle { display: none; background: transparent; border: none; padding: 8px; cursor: pointer; }
+        .hamburger { display: block; width: 22px; height: 2px; background: rgba(255, 255, 255, 0.9); margin: 5px 0; transition: transform .25s ease, opacity .25s ease; }
+        .nav-overlay { display: none; }
+
+        /* PC端 nav-link 间距 */
+        @media (min-width: 769px) {
+            .nav-link { padding: 5px 12px; }
+            .nav-menu {
+                gap: 8px;
+            }
+            .nav-item {
+                display: inline-block;
+            }
+        }
+
+        /* 桌面端加宽版面，避免导航拥挤 */
+        @media (min-width: 1025px) {
+            html, body { min-width: 1600px; }
+            .header-div, .main-div, .navbar, .nav-container { max-width: none; }
+        }
+
+        /* Language switch (CN) - 优化版本 */
+        .lang-switch {
+            position: relative;
+            z-index: 2;
+            text-decoration: none;
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            min-width: 120px;
+            padding: 0 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.95);
+            margin-left: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            font-weight: 500;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        .lang-switch:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        .lang-switch:active {
+            transform: translateY(0);
+        }
+        .lang-switch .ls-left {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-switch .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .lang-switch .divider {
+            width: 1px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .lang-switch .label {
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .lang-switch .ls-right {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 4px;
+        }
+        .lang-switch .arrow {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease;
+        }
+        .lang-switch:hover .arrow {
+            transform: translateY(2px);
+        }
+        @media (max-width: 768px) {
+            .lang-switch {
+                position: fixed;
+                right: 12px;
+                /* top: 0px; */
+                height: 38px;
+                min-width: 110px;
+                padding: 0 18px;
+                z-index: 10002;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            .lang-switch .badge {
+                font-size: 11px;
+                padding: 3px 8px;
+            }
+            .lang-switch .label {
+                font-size: 12px;
+            }
+        }
+
+        /* 下拉菜单样式 */
+        .nav-item { 
+            position: relative; 
+            display: inline-block;
+        }
+        .dropdown-toggle { 
+            cursor: pointer; 
+            user-select: none;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            min-width: 600px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.15);
+            border-radius: 8px;
+            padding: 16px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            pointer-events: none;
+            overflow: visible;
+            max-height: none;
+            height: auto;
+        }
+        /* 菜单显示时 */
+        .nav-item:hover .dropdown-menu,
+        .nav-item.dropdown-open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        /* 下拉菜单链接样式 */
+        .dropdown-menu .nav-link {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            background: transparent;
+            border-radius: 6px;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+            margin: 0;
+            text-align: center;
+            cursor: pointer;
+        }
+        .dropdown-menu .nav-link:hover {
+            background: #f5f5f5;
+            color: #007bff;
+        }
+        .dropdown-toggle::after {
+            content: ' ▼';
+            font-size: 10px;
+            margin-left: 4px;
+            opacity: 0.7;
+        }
+        
+        /* 中等屏幕响应式设计（平板） */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .dropdown-menu {
+                min-width: 480px;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* 大屏幕显示4列 */
+        @media (min-width: 1025px) {
+            .dropdown-menu {
+                min-width: 600px;
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* 导航栏图标样式 */
+        .dropdown-toggle::before,
+        .nav-link[href="about.html"]::before,
+        .nav-link[href="contact.html"]::before {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 16px;
+            line-height: 1;
+        }
+        .dropdown-toggle::before {
+            content: "🤖";
+        }
+        .nav-link[href="about.html"]::before {
+            content: "ℹ️";
+        }
+        .nav-link[href="contact.html"]::before {
+            content: "📧";
+        }
+        
+        /* 确保下拉菜单在导航栏中正确显示 */
+        @media (min-width: 769px) {
+            .nav-item .dropdown-toggle {
+                color: rgba(255, 255, 255, 0.9);
+                background-color: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                padding: 8px 16px;
+                display: inline-block;
+                font-weight: 500;
+            }
+            .nav-item:hover .dropdown-toggle {
+                background-color: rgba(255, 255, 255, 0.15);
+                color: #fff;
+            }
+        }
+
+        /* 移动端抽屉菜单 */
+        @media (max-width: 768px) {
+            /* 避免父级裁剪或创建新定位上下文导致抽屉被截断 */
+            .header-div, .navbar, .nav-container { overflow: visible !important; }
+            .header-div, .navbar, .nav-container { transform: none !important; -webkit-transform: none !important; }
+            .header-div, .navbar, .nav-container { contain: unset !important; }
+            .nav-toggle { display: inline-block; }
+            .nav-menu {
+                position: fixed; top: 0; bottom: 0; left: 0; width: 85%; max-width: 420px;
+                background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,.12);
+                display: block; padding: calc(env(safe-area-inset-top,0) + 12px) 12px 24px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+                transform: translateX(-100%); transition: transform .25s ease; z-index: 10001; will-change: transform;
+            }
+            .nav-menu .nav-link { display: flex; align-items: center; padding: 0; border-bottom: 1px solid #f2f2f2; }
+            .nav-menu.nav-menu-active { transform: translateX(0); }
+
+            .nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: 10000; display: block; }
+            .nav-overlay.nav-overlay-active { opacity: 1; pointer-events: auto; }
+
+            /* 汉堡动画 */
+            .nav-toggle.nav-toggle-active .hamburger:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .nav-toggle.nav-toggle-active .hamburger:nth-child(2) { opacity: 0; }
+            .nav-toggle.nav-toggle-active .hamburger:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+            /* 移动端上下间隙（PC 端不生效） */
+            .nav-menu .nav-link { margin: 10px 0; }
+            
+            /* 移动端下拉菜单样式 */
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid #f2f2f2;
+            }
+            .dropdown-toggle {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding: 16px 20px;
+                color: #333;
+                background: white;
+                border: none;
+                text-align: left;
+                font-size: 1rem;
+                font-weight: 500;
+                margin: 0;
+            }
+            .dropdown-menu {
+                position: static;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                transform: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                transition: opacity 0.3s ease, max-height 0.3s ease;
+                border-radius: 0;
+                display: block !important;
+                grid-template-columns: 1fr !important;
+                min-width: auto !important;
+            }
+            .nav-item.dropdown-open .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                max-height: 2000px;
+            }
+            .dropdown-menu .nav-link {
+                padding: 12px 20px 12px 40px;
+                font-size: 14px;
+                border-bottom: 1px solid #e9ecef;
+                color: #333;
+                text-align: left;
+            }
+            .dropdown-menu .nav-link:hover {
+                background: #e9ecef;
+            }
+            
+            /* 移动端导航栏图标 */
+            .dropdown-toggle::before,
+            .nav-link[href="about.html"]::before,
+            .nav-link[href="contact.html"]::before {
+                display: inline-block;
+                margin-right: 8px;
+                font-size: 18px;
+            }
+        }
+
+        /* Normalize action buttons height and appearance */
+        .file-label, #removeMosaicBtn {
+            display: inline-flex; align-items: center; justify-content: center;
+            height: 44px; padding: 0 20px; line-height: 1; box-sizing: border-box;
+            border: none; appearance: none; -webkit-appearance: none; cursor: pointer;
+            border-radius: 8px;
+        }
+        /* 友情链接样式 */
+        .friendship-links {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .friendship-links h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .links-grid a {
+            display: inline;
+            text-decoration: underline;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 15px 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .links-grid a:hover {
+            color: #007bff;
+        }
+
+        /* 移动端友情链接样式 */
+        @media (max-width: 768px) {
+            .links-grid a {
+                margin: 0 10px 8px 0;
+                font-size: 15px;
+            }
+
+            .friendship-links {
+                padding: 0 15px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <header class="header-div">
+        <nav class="navbar">
+            <div class="nav-container">
+                <button class="nav-toggle" id="navToggle" aria-label="切换导航菜单">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <div class="nav-item">
+                        <span class="nav-link dropdown-toggle">图片AI工具</span>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="nav-link">图片马赛克</a>
+                            <a href="crop/crop.html" class="nav-link">裁剪图片</a>
+                            <a href="convert/convert.html" class="nav-link">格式转换</a>
+                            <a href="icon/icon.html" class="nav-link">图标生成器</a>
+                            <a href="compress/compress.html" class="nav-link">压缩图片</a>
+                            <a href="blank/blank.html" class="nav-link">灰度处理</a>
+                            <a href="watermark/watermark.html" class="nav-link">添加水印</a>
+                            <a href="removewm/removewm.html" class="nav-link">去除水印</a>
+                            <a href="nine/nine.html" class="nav-link">图片网格</a>
+                            <a href="text/text.html" class="nav-link">文字转图片</a>
+                            <a href="join/join.html" class="nav-link">合并图片</a>
+                            <a href="textToimage/textToimage.html" class="nav-link">添加文字</a>
+                            <a href="corner/corner.html" class="nav-link">圆角处理</a>
+                            <a href="expand/expand.html" class="nav-link">放大图片</a>
+                            <a href="old/old.html" class="nav-link">照片修复</a>
+                            <a href="bg/bg.html" class="nav-link">图片上色</a>
+                            <a href="removebg/removebg.html" class="nav-link">去除背景</a>
+                            <a href="changebg/changebg.html" class="nav-link">更换背景</a>
+                            <a href="rotate/rotate.html" class="nav-link">🔄 图片旋转</a>
+                            <a href="exif/exif.html" class="nav-link">📷 查看EXIF</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">关于</a>
+                    <a href="contact.html" class="nav-link">联系我们</a>
+                </div>
+                <button id="loginBtn" class="lang-switch" style="margin-left:0;margin-right:12px;" aria-label="Google登录">
+                    <span class="ls-left">
+                        <span class="label" id="loginLabel">Google登录</span>
+                    </span>
+                </button>
+                <a class="lang-switch" href="https://mosaic.chdaoai.com/" aria-label="切换到中文版本" target="_blank" rel="nofollow noopener noreferrer">
+                    <span class="ls-left">
+                        <span class="badge">English</span>
+                        <span class="divider"></span>
+                    </span>
+                    <span class="ls-right"><i class="arrow"></i></span>
+                </a>
+            </div>
+        </nav>
+        <h1 class="header-title">图片马赛克</h1>
+    </header>
+
+    <!-- 移动端菜单遮罩层 -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <main class="main-div">
+        <section class="frame-div upload-section">
+            <div class="frame-top">
+                <label for="fileBtn" class="file-label">选择图片</label>
+                <input type="file" id="fileBtn" accept="image/jpeg,image/gif,image/png,image/bmp,image/webp" />
+                <button type="button" id="removeMosaicBtn" class="file-label" style="margin-left:8px;">去除马赛克</button>
+            </div>
+            <div class="frame-center" id="leftFrameCenter" style="position:relative">
+                <div class="preview-container" id="previewContainer">
+                    <div class="preview-image-wrapper" id="previewWrapper" onclick="document.getElementById('fileBtn').click()">
+                        <img id="previewImg" alt="预览图" style="display:none"/>
+                        <span id="previewPlaceholder" style="font-size: 40px;">+</span>
+                    </div>
+                    <span class="preview-label">点击预览图选择图片</span>
+                    <span class="preview-hint">支持 JPG、PNG、GIF、BMP、WebP</span>
+                </div>
+                <img id="img" alt="原始图片" style="display:none"/>
+                <canvas id="overlayCanvas" style="display:none;position:absolute;left:0;top:0;pointer-events:auto"></canvas>
+                <div class="placeholder-text" id="uploadPlaceholder" style="display:none">请选择一张图片</div>
+            </div>
+        </section>
+        <section class="frame-div result-section">
+            <div class="frame-top">
+                <div class="controls-group">
+                    <label for="rangeInput" class="range-label">马赛克强度：<span id="rangeValue">15</span></label>
+                    <input type="range" id="rangeInput" min="1" max="30" value="15" />
+                </div>
+                <div class="controls-group">
+                    <label for="modeSelect" class="range-label">模式：</label>
+                    <select id="modeSelect">
+                        <option value="full">全图马赛克</option>
+                        <option value="rect">矩形区域</option>
+                        <option value="brush">画笔</option>
+                    </select>
+                </div>
+                <div class="controls-group" id="brushGroup" style="display:none">
+                    <label for="brushSize" class="range-label">画笔大小：<span id="brushValue">30</span></label>
+                    <input type="range" id="brushSize" min="5" max="200" value="30" />
+                    <button type="button" id="clearMaskBtn" class="download-btn" style="margin-left:8px">清除选择</button>
+                </div>
+                <button type="button" id="downloadBtn" class="download-btn">下载图片</button>
+            </div>
+            <div class="frame-center">
+                <img id="convertImg" alt="处理后的图片" style="display:none"/>
+                <div class="placeholder-text">处理后的图片将显示在这里</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 功能说明和使用帮助部分 -->
+    <section class="info-section">
+        <div class="info-container">
+            <!-- 功能说明 -->
+            <div class="info-card">
+                <h2>📋 功能说明</h2>
+                <p>我们的图片马赛克工具提供三种强大的模式来保护隐私和创建艺术效果：</p>
+                <ul>
+                    <li><strong>全图马赛克：</strong> 对整个图像应用马赛克效果</li>
+                    <li><strong>矩形区域：</strong> 选择特定的矩形区域进行马赛克处理</li>
+                    <li><strong>画笔模式：</strong> 使用可自定义大小的画笔绘制马赛克效果</li>
+                </ul>
+    </div>
+
+            <!-- 使用帮助 -->
+            <div class="info-card">
+                <h2>💡 使用指南</h2>
+                <ol>
+                    <li>点击"选择图片"上传您的图片</li>
+                    <li>选择您喜欢的模式（全图、矩形或画笔）</li>
+                    <li>调整马赛克强度滑块（1-10）</li>
+                    <li>矩形模式：点击并拖动选择区域</li>
+                    <li>画笔模式：在要添加马赛克的区域上绘制</li>
+                    <li>点击"下载图片"保存处理后的图片</li>
+                </ol>
+            </div>
+
+            <!-- 使用案例 -->
+            <div class="info-card">
+                <h2>🎨 使用案例</h2>
+                <div class="use-cases">
+                    <div class="use-case-item">
+                        <strong>隐私保护：</strong> 模糊照片中的脸部、车牌或敏感信息
+                    </div>
+                    <div class="use-case-item">
+                        <strong>艺术效果：</strong> 为创意项目创建像素化艺术风格
+                    </div>
+                    <div class="use-case-item">
+                        <strong>内容审核：</strong> 在分享前审查不当内容
+                    </div>
+                    <div class="use-case-item">
+                        <strong>社交媒体：</strong> 在网上发布图片时保护隐私
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示部分 -->
+    <section class="examples-section">
+        <div class="examples-container">
+            <h2>📸 案例展示</h2>
+            <div class="examples-grid">
+                <!-- 全部马赛克案例 -->
+                <div class="example-card">
+                    <h3>全图马赛克案例</h3>
+                    <div class="example-image-wrapper">
+                        <img src="static/image/m1.png" alt="全图马赛克案例" class="example-image">
+                    </div>
+                    <p class="example-description">
+                        <strong>全图马赛克模式：</strong> 对整个图像应用马赛克效果。此模式非常适合创建艺术像素化效果或保护整个图像的隐私。
+                    </p>
+                </div>
+
+                <!-- 局部马赛克案例 -->
+                <div class="example-card">
+                    <h3>局部马赛克案例</h3>
+                    <div class="example-image-wrapper">
+                        <img src="static/image/m2.png" alt="局部马赛克案例" class="example-image">
+                    </div>
+                    <p class="example-description">
+                        <strong>局部马赛克模式：</strong> 选择特定区域应用马赛克效果。使用矩形或画笔模式只保护您想要的区域，同时保持图像的其余部分清晰。
+                    </p>
+                </div>
+
+                <!-- 视频案例 -->
+                <div class="example-card example-video-card">
+                    <h3>视频教程</h3>
+                    <div class="example-video-wrapper">
+                        <video src="static/image/mosaic.mp4" controls class="example-video" poster="">
+                            您的浏览器不支持视频标签。
+                        </video>
+                    </div>
+                    <p class="example-description">
+                        <strong>视频指南：</strong> 观看此教程视频，了解如何有效使用我们的图片马赛克工具。查看分步说明，了解如何应用马赛克效果来保护隐私或创建艺术效果。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 会员套餐部分 -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2>💎 会员套餐</h2>
+            <div class="pricing-grid">
+                <!-- 月度套餐 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>月度套餐</h3>
+                        <div class="price">$6.66<span>/月</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 无限图片处理</li>
+                        <li>✓ 所有马赛克模式</li>
+                        <li>✓ 高分辨率下载</li>
+                        <li>✓ 优先支持</li>
+                        <li>✓ 无广告体验</li>
+                    </ul>
+                    <button class="pricing-btn">立即订阅</button>
+                </div>
+
+                <!-- 季度套餐 -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">超值选择</div>
+                    <div class="pricing-header">
+                        <h3>季度套餐</h3>
+                        <div class="price">$16.66<span>/3个月</span></div>
+                        <div class="price-save">节省17%</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 包含月度所有功能</li>
+                        <li>✓ 批量处理</li>
+                        <li>✓ 高级滤镜</li>
+                        <li>✓ API访问</li>
+                        <li>✓ 自定义水印</li>
+                    </ul>
+                    <button class="pricing-btn">立即订阅</button>
+                </div>
+
+                <!-- 年度套餐 -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>年度套餐</h3>
+                        <div class="price">$56.66<span>/年</span></div>
+                        <div class="price-save">节省33%</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ 包含季度所有功能</li>
+                        <li>✓ 无限存储</li>
+                        <li>✓ 白标选项</li>
+                        <li>✓ 专属支持</li>
+                        <li>✓ 新功能抢先体验</li>
+                    </ul>
+                    <button class="pricing-btn">立即订阅</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 邮箱订阅部分 -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2>📧 订阅我们的 newsletter</h2>
+            <p>获取使用指南、使用案例和独家会员优惠</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="输入您的邮箱地址" required class="newsletter-input">
+                <button type="submit" class="newsletter-btn">订阅</button>
+            </form>
+            <p class="newsletter-note">订阅后，您将收到使用指南、使用案例和会员信息。</p>
+        </div>
+    </section>
+
+    <!-- 页脚部分 -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- 关于我们 -->
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <p>传道AI提供前沿的图像处理工具，帮助您轻松创建、编辑和增强图像。</p>
+                </div>
+
+                <!-- 联系我们 -->
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <p>邮箱：<a href="mailto:support@openai2025.com">support@openai2025.com</a></p>
+                    <p>我们随时为您解答任何问题或疑虑。</p>
+                </div>
+
+                <!-- 隐私政策 -->
+                <div class="footer-column">
+                    <h3>隐私政策</h3>
+                    <p>我们尊重您的隐私。所有上传的图像都经过安全处理，不会存储在我们的服务器上。</p>
+                    <a href="privacy.html" class="footer-link">了解更多</a>
+                </div>
+
+                <!-- 服务条款 -->
+                <div class="footer-column">
+                    <h3>服务条款</h3>
+                    <p>使用我们的服务，即表示您同意我们的条款和条件。</p>
+                    <a href="terms.html" class="footer-link">了解更多</a>
+                </div>
+            </div>
+            <!-- 友情链接 -->
+            <div class="friendship-links">
+                <h3>友情链接</h3>
+                <div class="links-grid">
+                    <a href="https://www.removewatermarker.com/" target="_blank" rel="noopener noreferrer">视频去水印字幕工具</a>
+                    <a href="https://www.chdaoai.com/zh/text-to-subtitles" target="_blank" rel="noopener noreferrer">在线文字转字幕AI工具</a>
+                    <a href="https://www.openai2025.com/" target="_blank" rel="noopener noreferrer">传道PDF图片条码工具</a>
+                    <a href="https://www.base64.club/" target="_blank" rel="noopener noreferrer">在线base64工具</a>
+                    <a href="https://www.zorezoro.com/" target="_blank" rel="noopener noreferrer">NBA趣事</a>
+                    <a href="https://www.icebreakgame.com/" target="_blank" rel="noopener noreferrer">在线免费游戏</a>
+                    <a href="https://food.zorezoro.com/" target="_blank" rel="noopener noreferrer">中国菜系大全</a>
+                    <a href="https://gf.zorezoro.com/" target="_blank" rel="noopener noreferrer">中国功夫大全</a>
+                    <a href="https://china.zorezoro.com/" target="_blank" rel="noopener noreferrer">中国24史</a>
+           
+                </div>
+            </div>
+            <!-- 版权信息 -->
+            <div class="footer-bottom">
+                <p>版权所有 © 传道AI。保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+
+        var pix = 15;
+        // 模式与掩膜状态
+        var mode = 'full'; // full | rect | brush
+        var brushSize = 30;
+        var rectSelecting = false;
+        var rectStart = null;
+        var maskCanvas = null; // 与原图同像素尺寸
+
+        // 导航菜单切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            const navOverlay = document.getElementById('navOverlay');
+            const navOriginalContainer = navMenu ? navMenu.parentElement : null;
+            
+            // 检查是否为移动端
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            function toggleMenu() {
+                if (isMobile()) {
+                    console.log('Toggle menu clicked');
+                    navMenu.classList.toggle('nav-menu-active');
+                    navToggle.classList.toggle('nav-toggle-active');
+                    navOverlay.classList.toggle('nav-overlay-active');
+                    
+                    // 确保菜单显示时移除隐藏的transform
+                    if (navMenu.classList.contains('nav-menu-active')) {
+                        navMenu.style.transform = 'translateX(0)';
+                        // 禁用页面滚动
+                        document.body.classList.add('menu-open');
+                        document.documentElement.classList.add('menu-open');
+                        
+                        // 强制设置菜单滚动属性
+                        navMenu.style.overflowY = 'scroll';
+                        navMenu.style.overflowX = 'hidden';
+                        navMenu.style.height = '100vh';
+                        navMenu.style.touchAction = 'pan-y';
+                        navMenu.style.webkitOverflowScrolling = 'touch';
+                        
+                        // 诊断：统计子项高度总和
+                        const links = navMenu.querySelectorAll('.nav-link');
+                        let totalItemsHeight = 0;
+                        links.forEach(el => { totalItemsHeight += el.offsetHeight; });
+                        console.log('Menu opened with scroll enabled');
+                        console.log('Menu height:', navMenu.clientHeight, 'Content height:', navMenu.scrollHeight, 'Items sum:', totalItemsHeight, 'Count:', links.length);
+                        console.log('Menu computed overflow-y:', getComputedStyle(navMenu).overflowY);
+
+                        // 强制添加spacer确保可滚动
+                        let spacer = document.getElementById('__nav_spacer__');
+                        if (spacer && spacer.parentElement === navMenu) {
+                            navMenu.removeChild(spacer);
+                        }
+                        spacer = document.createElement('div');
+                        spacer.id = '__nav_spacer__';
+                        spacer.style.height = '300px';
+                        spacer.style.width = '100%';
+                        spacer.style.display = 'block';
+                        spacer.style.pointerEvents = 'none';
+                        spacer.style.backgroundColor = 'transparent';
+                        spacer.style.flexShrink = '0';
+                        navMenu.appendChild(spacer);
+                        
+                        // 强制重新计算布局
+                        navMenu.offsetHeight;
+                        
+                        // 再次输出高度以验证
+                        setTimeout(function(){
+                            console.log('After spacer -> Menu height:', navMenu.clientHeight, 'Content height:', navMenu.scrollHeight);
+                            console.log('Spacer height:', spacer.offsetHeight);
+                            console.log('Can scroll:', navMenu.scrollHeight > navMenu.clientHeight);
+                            console.log('Scroll top:', navMenu.scrollTop, 'Max scroll:', navMenu.scrollHeight - navMenu.clientHeight);
+                        }, 50);
+                    } else {
+                        navMenu.style.transform = 'translateX(-100%)';
+                        // 恢复页面滚动
+                        document.body.classList.remove('menu-open');
+                        document.documentElement.classList.remove('menu-open');
+                        // 清理占位
+                        const spacer = document.getElementById('__nav_spacer__');
+                        if (spacer && spacer.parentElement === navMenu) {
+                            navMenu.removeChild(spacer);
+                        }
+                    }
+                    
+                    console.log('Menu classes:', navMenu.className);
+                }
+            }
+            
+            function closeMenu() {
+                if (isMobile()) {
+                    navMenu.classList.remove('nav-menu-active');
+                    navToggle.classList.remove('nav-toggle-active');
+                    navOverlay.classList.remove('nav-overlay-active');
+                    navMenu.style.transform = 'translateX(-100%)';
+                    // 恢复页面滚动
+                    document.body.classList.remove('menu-open');
+                    document.documentElement.classList.remove('menu-open');
+                }
+            }
+
+            // 将菜单在移动端提到 body 直下，避免任何父级层叠上下文/裁剪影响层级
+            function promoteMenuForMobile(){
+                if (!navMenu) return;
+                if (isMobile()) {
+                    if (navMenu.parentElement !== document.body) {
+                        document.body.appendChild(navMenu);
+                    }
+                    // 确保移动端菜单有正确的样式
+                    navMenu.style.display = 'flex';
+                    navMenu.style.position = 'fixed';
+                    navMenu.style.top = '0';
+                    navMenu.style.left = '0';
+                    navMenu.style.width = '380px';
+                    navMenu.style.height = '100vh';
+                    navMenu.style.background = '#ffffff';
+                    navMenu.style.flexDirection = 'column';
+                    navMenu.style.justifyContent = 'flex-start';
+                    navMenu.style.alignItems = 'stretch';
+                    navMenu.style.padding = '0';
+                    navMenu.style.gap = '0';
+                    navMenu.style.zIndex = '10001';
+                    navMenu.style.boxShadow = '2px 0 10px rgba(0, 0, 0, 0.1)';
+                    navMenu.style.overflowY = 'scroll';
+                    navMenu.style.overflowX = 'hidden';
+                    navMenu.style.webkitOverflowScrolling = 'touch';
+                    navMenu.style.touchAction = 'pan-y';
+                    navMenu.style.transition = 'transform .25s ease';
+                    
+                    // 保持菜单的当前显示状态，不强制隐藏
+                    if (!navMenu.classList.contains('nav-menu-active')) {
+                        navMenu.style.transform = 'translateX(-100%)';
+                    } else {
+                        navMenu.style.transform = 'translateX(0)';
+                    }
+                } else {
+                    if (navOriginalContainer && navMenu.parentElement !== navOriginalContainer) {
+                        navOriginalContainer.appendChild(navMenu);
+                    }
+                    // 重置PC端样式
+                    navMenu.style.display = '';
+                    navMenu.style.position = '';
+                    navMenu.style.top = '';
+                    navMenu.style.left = '';
+                    navMenu.style.width = '';
+                    navMenu.style.height = '';
+                    navMenu.style.background = '';
+                    navMenu.style.flexDirection = '';
+                    navMenu.style.justifyContent = '';
+                    navMenu.style.alignItems = '';
+                    navMenu.style.padding = '';
+                    navMenu.style.gap = '';
+                    navMenu.style.zIndex = '';
+                    navMenu.style.boxShadow = '';
+                    navMenu.style.overflowY = '';
+                    navMenu.style.webkitOverflowScrolling = '';
+                    navMenu.style.transform = '';
+                    navMenu.style.transition = '';
+                }
+            }
+            promoteMenuForMobile();
+            
+            // 只在移动端添加事件监听器
+            if (navToggle) {
+                navToggle.addEventListener('click', toggleMenu);
+            }
+            
+            if (navOverlay) {
+                navOverlay.addEventListener('click', closeMenu);
+            }
+            
+            // 下拉菜单点击处理（移动端）
+            const dropdownToggle = document.querySelector('.dropdown-toggle');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            const navItem = document.querySelector('.nav-item');
+            
+            if (dropdownToggle && dropdownMenu && navItem) {
+                let hideTimeout = null;
+                
+                // PC端：简洁的鼠标悬停逻辑
+                if (!isMobile()) {
+                    let hideTimer = null;
+                    
+                    function showMenu() {
+                        if (hideTimer) {
+                            clearTimeout(hideTimer);
+                            hideTimer = null;
+                        }
+                        navItem.classList.add('dropdown-open');
+                    }
+                    
+                    function hideMenu() {
+                        hideTimer = setTimeout(function() {
+                            navItem.classList.remove('dropdown-open');
+                        }, 200);
+                    }
+                    
+                    // 鼠标进入时显示
+                    navItem.addEventListener('mouseenter', showMenu);
+                    dropdownMenu.addEventListener('mouseenter', showMenu);
+                    
+                    // 鼠标离开时隐藏
+                    navItem.addEventListener('mouseleave', function(e) {
+                        if (e.relatedTarget && dropdownMenu.contains(e.relatedTarget)) {
+                            return;
+                        }
+                        hideMenu();
+                    });
+                    
+                    dropdownMenu.addEventListener('mouseleave', function(e) {
+                        if (e.relatedTarget && navItem.contains(e.relatedTarget)) {
+                            return;
+                        }
+                        hideMenu();
+                    });
+                }
+                
+                // 移动端点击处理
+                dropdownToggle.addEventListener('click', function(e) {
+                    if (isMobile()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        navItem.classList.toggle('dropdown-open');
+                    }
+                });
+                
+                // 点击外部关闭下拉菜单（仅移动端）
+                document.addEventListener('click', function(e) {
+                    if (isMobile() && !navItem.contains(e.target)) {
+                        navItem.classList.remove('dropdown-open');
+                    }
+                });
+            }
+            
+            // 点击菜单项后关闭移动端菜单
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                let startX = 0, startY = 0, startT = 0;
+                const threshold = 8; // 允许的手指抖动
+                function onStart(e){
+                    if (!isMobile()) return;
+                    const t = e.touches ? e.touches[0] : e;
+                    startX = t.clientX; startY = t.clientY; startT = Date.now();
+                }
+                function onEnd(e){
+                    if (!isMobile()) return;
+                    const t = e.changedTouches ? e.changedTouches[0] : e;
+                    const dx = Math.abs(t.clientX - startX);
+                    const dy = Math.abs(t.clientY - startY);
+                    const dt = Date.now() - startT;
+                    if (dx < threshold && dy < threshold && dt < 1500) {
+                        const href = link.getAttribute('href');
+                        if (href) {
+                            e.preventDefault(); e.stopPropagation();
+                            window.location.assign(href);
+                        }
+                    }
+                }
+                link.addEventListener('touchstart', onStart, {passive:true, capture:true});
+                link.addEventListener('touchend', onEnd, {passive:false, capture:true});
+                link.addEventListener('mousedown', onStart, true);
+                link.addEventListener('mouseup', onEnd, true);
+                // 兜底：点击事件（防止某些环境未触发指针序列）
+                link.addEventListener('click', function(e){
+                    if (!isMobile()) return;
+                    const href = link.getAttribute('href');
+                    if (href) { e.preventDefault(); e.stopPropagation(); window.location.assign(href); }
+                }, true);
+            });
+            
+            // 窗口大小改变时重新检查
+            window.addEventListener('resize', function() {
+                if (!isMobile()) {
+                    closeMenu();
+                } else {
+                    // 移动端时只重新初始化样式，不改变菜单显示状态
+                    promoteMenuForMobile();
+                }
+            });
+            
+            // 页面滚动时也重新检查菜单状态，但不重置菜单显示状态
+            window.addEventListener('scroll', function() {
+                if (isMobile()) {
+                    // 只确保菜单在正确的位置，不改变显示状态
+                    if (navMenu.parentElement !== document.body) {
+                        document.body.appendChild(navMenu);
+                    }
+                    // 保持菜单的当前显示状态
+                    if (navMenu.classList.contains('nav-menu-active')) {
+                        navMenu.style.transform = 'translateX(0)';
+                    } else {
+                        navMenu.style.transform = 'translateX(-100%)';
+                    }
+                }
+            });
+            
+            // 添加滚动测试监听器
+            if (navMenu) {
+                navMenu.addEventListener('scroll', function() {
+                    console.log('Menu scrolling detected:', navMenu.scrollTop);
+                });
+                console.log('Menu initialized with scroll listener');
+            }
+        });
+
+        document.getElementById("fileBtn").addEventListener("change",function (e){
+            if (window.FileReader) {
+                var file = e.target.files[0];
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    var dataURL = event.target.result;
+                    var img = document.getElementById("img");
+                    var convertImg = document.getElementById("convertImg");
+                    var uploadPlaceholder = document.getElementById("uploadPlaceholder");
+                    var previewContainer = document.getElementById("previewContainer");
+                    var previewImg = document.getElementById("previewImg");
+                    var previewPlaceholder = document.getElementById("previewPlaceholder");
+                    var resultPlaceholder = convertImg.parentElement.querySelector('.placeholder-text');
+
+                    img.src = dataURL;
+                    img.style.display = "block";
+                    convertImg.style.display = "block";
+
+                    // 更新预览图
+                    previewImg.src = dataURL;
+                    previewImg.style.display = "block";
+                    previewPlaceholder.style.display = "none";
+
+                    // 隐藏占位符
+                    uploadPlaceholder.style.display = "none";
+                    previewContainer.style.display = "none";
+                    resultPlaceholder.style.display = "none";
+
+                    // 确保两个图片的显示尺寸一致
+                    img.onload = function() {
+                        convertImg.style.width = img.offsetWidth + 'px';
+                        convertImg.style.height = img.offsetHeight + 'px';
+                        if (typeof window.__syncOverlaySize === 'function') {
+                            window.__syncOverlaySize();
+                        }
+                    };
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("您的浏览器不支持此功能");
+            }
+        });
+
+        document.getElementById("img").addEventListener("load",function (e){
+            if (e.target.src) {
+                showConvertPic();
+            }
+        });
+
+
+        document.getElementById("rangeInput").addEventListener("change", function (e) {
+            if (document.getElementById("img").src) {
+                pix = parseInt(e.target.value);
+                document.getElementById("rangeValue").textContent = pix;
+                showConvertPic();
+            }
+        });
+
+        document.getElementById("downloadBtn").addEventListener("click",function (e){
+            var convertImg = document.getElementById("convertImg");
+            if(!!convertImg.src){
+                download(convertImg.src);
+            } else {
+                alert("请先上传图片");
+            }
+        });
+
+        // Remove mosaic processing
+        (function(){
+            function createDeMosaicPic(img){
+                if(!img || !img.naturalWidth) return null;
+                var srcW = img.naturalWidth, srcH = img.naturalHeight;
+                var scale = 3; // upscale factor to smooth pixel blocks
+                // upscale with smoothing
+                var up = document.createElement('canvas');
+                up.width = srcW * scale; up.height = srcH * scale;
+                var uctx = up.getContext('2d');
+                uctx.imageSmoothingEnabled = true;
+                uctx.imageSmoothingQuality = 'high';
+                uctx.drawImage(img, 0, 0, up.width, up.height);
+                // downscale back with smoothing
+                var down = document.createElement('canvas');
+                down.width = srcW; down.height = srcH;
+                var dctx = down.getContext('2d');
+                dctx.imageSmoothingEnabled = true;
+                dctx.imageSmoothingQuality = 'high';
+                dctx.drawImage(up, 0, 0, down.width, down.height);
+                return down.toDataURL();
+            }
+
+            var removeBtn = document.getElementById('removeMosaicBtn');
+            if(removeBtn){
+                removeBtn.addEventListener('click', function(){
+                    var img = document.getElementById('img');
+                    var convertImg = document.getElementById('convertImg');
+                    if(!img || !img.src){
+                        alert('请先上传图片');
+                        return;
+                    }
+                    var result = createDeMosaicPic(img);
+                    if(result){
+                        convertImg.src = result;
+                        convertImg.style.display = 'block';
+                        // match display size with the left image
+                        convertImg.style.width = img.style.width || (img.offsetWidth + 'px');
+                        convertImg.style.height = img.style.height || (img.offsetHeight + 'px');
+                        var resultPlaceholder = convertImg.parentElement.querySelector('.placeholder-text');
+                        if(resultPlaceholder){ resultPlaceholder.style.display = 'none'; }
+                    }
+                });
+            }
+        })();
+
+        function showConvertPic(){
+            var img = document.getElementById("img");
+            var convertImg = document.getElementById("convertImg");
+            convertImg.src = createRevertPic(img);
+            
+            // 确保右边图片的显示尺寸与左边图片一致
+            convertImg.style.width = img.style.width || img.offsetWidth + 'px';
+            convertImg.style.height = img.style.height || img.offsetHeight + 'px';
+        }
+
+        function createRevertPic(img){
+            var canvas = document.createElement("canvas");
+            // 使用图片的原始尺寸，而不是显示尺寸
+            canvas.width = img.naturalWidth;   
+            canvas.height = img.naturalHeight;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);  
+            var c = ctx.getImageData(0, 0, img.naturalWidth, img.naturalHeight);
+            var height = c.height;
+            var width = c.width;
+            for(var i = 0; i < height; i+=pix){
+                for(var j = 0; j < width; j+=pix){
+                    var rAvg = 0;
+                    var gAvg = 0;
+                    var bAvg = 0;
+                    var aAvg = 0;
+                    var count = 0;
+                    outerFor:for (var iPix = i; iPix < i+pix; iPix++) {
+                        for (var jPix = j; jPix < j+pix; jPix++) {
+                            if (iPix > height) {
+                                break;
+                            } else if(jPix>width){
+                                break outerFor;
+                            }
+                            var x = iPix*4*width + 4*jPix;
+                            count++;
+                            rAvg += c.data[x];
+                            gAvg += c.data[x+1];
+                            bAvg += c.data[x+2];
+                            aAvg += c.data[x+3];
+                        }
+                        
+                    }
+                    rAvg /= (count);
+                    gAvg /= (count);
+                    bAvg /= (count);
+                    aAvg /= (count);
+
+                    outerFor:for (var iPix = i; iPix < i+pix; iPix++) {
+                        for (var jPix = j; jPix < j+pix; jPix++) {
+                            if (iPix > height) {
+                                break;
+                            } else if(jPix>width){
+                                break outerFor;
+                            }
+                            var x = iPix*4*width + 4*jPix;
+                            c.data[x] = rAvg
+                            c.data[x+1] = gAvg;
+                            c.data[x+2] = bAvg; 
+                            c.data[x+3] = aAvg;
+                        }
+                    }
+                }
+            }
+            ctx.putImageData(c,0,0);
+            return canvas.toDataURL();
+        }
+
+
+        function download(src) {
+            var $a = document.createElement('a');
+            $a.setAttribute("href", src);
+            $a.setAttribute("download", "");
+
+            var evObj = document.createEvent('MouseEvents');
+            evObj.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, true, false, 0, null);
+            $a.dispatchEvent(evObj);
+        };
+
+        
+        // ========= 覆盖层尺寸同步 =========
+        (function(){
+            var overlayCanvas = document.getElementById('overlayCanvas');
+            if(!overlayCanvas) return;
+            function syncOverlaySize(){
+                var img = document.getElementById('img');
+                if(!img || img.style.display!=="block") return;
+                // 同步尺寸
+                overlayCanvas.width = img.offsetWidth;
+                overlayCanvas.height = img.offsetHeight;
+                overlayCanvas.style.width = img.offsetWidth + 'px';
+                overlayCanvas.style.height = img.offsetHeight + 'px';
+                // 同步位置（相对其定位父容器）
+                overlayCanvas.style.left = img.offsetLeft + 'px';
+                overlayCanvas.style.top = img.offsetTop + 'px';
+            }
+            document.getElementById('img').addEventListener('load', function(){
+                syncOverlaySize();
+            });
+            window.addEventListener('resize', function(){
+                syncOverlaySize();
+            });
+            // 暴露到全局以便文件载入回调也可调用
+            window.__syncOverlaySize = syncOverlaySize;
+        })();
+
+        // ========= 掩膜与缩放 =========
+        function ensureMaskCanvas(){
+            var img = document.getElementById('img');
+            if(!img || !img.naturalWidth) return;
+            if(!maskCanvas || maskCanvas.width!==img.naturalWidth || maskCanvas.height!==img.naturalHeight){
+                maskCanvas = document.createElement('canvas');
+                maskCanvas.width = img.naturalWidth;
+                maskCanvas.height = img.naturalHeight;
+                var mctx = maskCanvas.getContext('2d');
+                mctx.clearRect(0,0,maskCanvas.width,maskCanvas.height);
+            }
+        }
+
+        function getScale(){
+            var img = document.getElementById('img');
+            var sx = img.naturalWidth / img.offsetWidth;
+            var sy = img.naturalHeight / img.offsetHeight;
+            return {sx, sy};
+        }
+
+        // ========= 覆盖层交互（矩形与画笔） =========
+        (function(){
+            var overlayCanvas = document.getElementById('overlayCanvas');
+            if(!overlayCanvas) return;
+            var octx = overlayCanvas.getContext('2d');
+            var isDrawing = false;
+            var startPoint = null;
+
+            function drawBrush(x,y){
+                // 预览
+                octx.fillStyle = 'rgba(255,0,0,0.25)';
+                octx.beginPath();
+                octx.arc(x,y, brushSize/2, 0, Math.PI*2);
+                octx.fill();
+                // 掩膜
+                ensureMaskCanvas();
+                if(!maskCanvas) return;
+                var {sx, sy} = getScale();
+                var mctx = maskCanvas.getContext('2d');
+                mctx.fillStyle = 'rgba(255,255,255,1)';
+                mctx.beginPath();
+                mctx.arc(x*sx, y*sy, (brushSize/2)*sx, 0, Math.PI*2);
+                mctx.fill();
+            }
+
+            function drawRectPreview(p1, p2){
+                octx.clearRect(0,0,overlayCanvas.width,overlayCanvas.height);
+                octx.fillStyle = 'rgba(255,0,0,0.25)';
+                var x = Math.min(p1.x, p2.x);
+                var y = Math.min(p1.y, p2.y);
+                var w = Math.abs(p1.x - p2.x);
+                var h = Math.abs(p1.y - p2.y);
+                octx.fillRect(x,y,w,h);
+            }
+
+            function commitRect(p1, p2){
+                ensureMaskCanvas();
+                if(!maskCanvas) return;
+                var {sx, sy} = getScale();
+                var mx = Math.min(p1.x, p2.x) * sx;
+                var my = Math.min(p1.y, p2.y) * sy;
+                var mw = Math.abs(p1.x - p2.x) * sx;
+                var mh = Math.abs(p1.y - p2.y) * sy;
+                var mctx = maskCanvas.getContext('2d');
+                mctx.fillStyle = 'rgba(255,255,255,1)';
+                mctx.fillRect(mx,my,mw,mh);
+            }
+
+            function getPos(e){
+                var rect = overlayCanvas.getBoundingClientRect();
+                return {x: e.clientX - rect.left, y: e.clientY - rect.top};
+            }
+
+            // 鼠标事件
+            overlayCanvas.addEventListener('mousedown', function(e){
+                if(mode==='full') return;
+                isDrawing = true;
+                var p = getPos(e);
+                if(mode==='brush'){
+                    drawBrush(p.x, p.y);
+                }else if(mode==='rect'){
+                    rectSelecting = true;
+                    startPoint = p;
+                    drawRectPreview(startPoint, startPoint);
+                }
+            });
+            overlayCanvas.addEventListener('mousemove', function(e){
+                if(!isDrawing) return;
+                var p = getPos(e);
+                if(mode==='brush'){
+                    drawBrush(p.x, p.y);
+                }else if(mode==='rect' && rectSelecting){
+                    drawRectPreview(startPoint, p);
+                }
+            });
+            window.addEventListener('mouseup', function(e){
+                if(!isDrawing) return;
+                isDrawing = false;
+                if(mode==='rect' && rectSelecting){
+                    var p = getPos(e);
+                    // 不清空掩膜，新的矩形与已有选择叠加
+                    commitRect(startPoint, p);
+                    rectSelecting = false;
+                    // 清理预览
+                    octx.clearRect(0,0,overlayCanvas.width,overlayCanvas.height);
+                }
+                showConvertPic();
+            });
+
+            // 触摸事件
+            overlayCanvas.addEventListener('touchstart', function(e){
+                if(mode==='full') return;
+                var t = e.touches[0];
+                var evt = {clientX:t.clientX, clientY:t.clientY};
+                isDrawing = true;
+                var p = getPos(evt);
+                if(mode==='brush'){
+                    drawBrush(p.x, p.y);
+                }else if(mode==='rect'){
+                    rectSelecting = true;
+                    startPoint = p;
+                    drawRectPreview(startPoint, startPoint);
+                }
+                e.preventDefault();
+            }, {passive:false});
+            overlayCanvas.addEventListener('touchmove', function(e){
+                if(!isDrawing) return;
+                var t = e.touches[0];
+                var evt = {clientX:t.clientX, clientY:t.clientY};
+                var p = getPos(evt);
+                if(mode==='brush'){
+                    drawBrush(p.x, p.y);
+                }else if(mode==='rect' && rectSelecting){
+                    drawRectPreview(startPoint, p);
+                }
+                e.preventDefault();
+            }, {passive:false});
+            overlayCanvas.addEventListener('touchend', function(e){
+                if(!isDrawing) return;
+                isDrawing = false;
+                if(mode==='rect' && rectSelecting){
+                    rectSelecting = false;
+                }
+                showConvertPic();
+                e.preventDefault();
+            }, {passive:false});
+        })();
+
+        // ========= 模式与画笔控件 =========
+        (function(){
+            var modeSelect = document.getElementById('modeSelect');
+            var brushInput = document.getElementById('brushSize');
+            var brushGroup = document.getElementById('brushGroup');
+            var overlayCanvas = document.getElementById('overlayCanvas');
+            var clearBtn = document.getElementById('clearMaskBtn');
+
+            if(modeSelect){
+                modeSelect.addEventListener('change', function(e){
+                    mode = e.target.value;
+                    if(mode==='brush'){
+                        brushGroup.style.display = 'inline-flex';
+                        if(document.getElementById('img').style.display==='block') overlayCanvas.style.display = 'block';
+                    }else if(mode==='rect'){
+                        brushGroup.style.display = 'none';
+                        if(document.getElementById('img').style.display==='block') overlayCanvas.style.display = 'block';
+                    }else{
+                        brushGroup.style.display = 'none';
+                        overlayCanvas.style.display = 'none';
+                    }
+                    showConvertPic();
+                });
+            }
+            if(brushInput){
+                brushInput.addEventListener('input', function(e){
+                    brushSize = parseInt(e.target.value,10);
+                    document.getElementById('brushValue').textContent = brushSize;
+                });
+            }
+            if(clearBtn){
+                clearBtn.addEventListener('click', function(){
+                    var octx = overlayCanvas.getContext('2d');
+                    octx.clearRect(0,0,overlayCanvas.width,overlayCanvas.height);
+                    if(maskCanvas){
+                        var mctx = maskCanvas.getContext('2d');
+                        mctx.clearRect(0,0,maskCanvas.width,maskCanvas.height);
+                    }
+                    showConvertPic();
+                });
+            }
+        })();
+
+        // ========= 覆盖 createRevertPic 以支持掩膜 =========
+        (function(){
+            var originalCreate = createRevertPic;
+            createRevertPic = function(img){
+                var canvas = document.createElement("canvas");
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
+                var c = ctx.getImageData(0, 0, img.naturalWidth, img.naturalHeight);
+                var height = c.height;
+                var width = c.width;
+
+                var useMask = (mode !== 'full');
+                var maskData = null;
+                if(useMask){
+                    ensureMaskCanvas();
+                    if(maskCanvas){
+                        var mctx = maskCanvas.getContext('2d');
+                        maskData = mctx.getImageData(0,0,maskCanvas.width,maskCanvas.height).data;
+                    }
+                }
+
+                for(var i = 0; i < height; i+=pix){
+                    for(var j = 0; j < width; j+=pix){
+                        if(useMask){
+                            // 以块中心像素判断是否在掩膜中，命中更稳定
+                            var ci = Math.min(i + Math.floor(pix/2), height - 1);
+                            var cj = Math.min(j + Math.floor(pix/2), width - 1);
+                            var mIndex = (ci*width + cj) * 4;
+                            var marked = maskData && maskData[mIndex+3] > 0;
+                            if(!marked){
+                                continue;
+                            }
+                        }
+                        var rAvg = 0, gAvg = 0, bAvg = 0, aAvg = 0, count = 0;
+                        outerFor: for (var iPix = i; iPix < i+pix; iPix++) {
+                            for (var jPix = j; jPix < j+pix; jPix++) {
+                                if (iPix > height) {
+                                    break;
+                                } else if(jPix>width){
+                                    break outerFor;
+                                }
+                                var x = iPix*4*width + 4*jPix;
+                                count++;
+                                rAvg += c.data[x];
+                                gAvg += c.data[x+1];
+                                bAvg += c.data[x+2];
+                                aAvg += c.data[x+3];
+                            }
+                        }
+                        rAvg /= count; gAvg /= count; bAvg /= count; aAvg /= count;
+                        outerFor: for (var iPix2 = i; iPix2 < i+pix; iPix2++) {
+                            for (var jPix2 = j; jPix2 < j+pix; jPix2++) {
+                                if (iPix2 > height) {
+                                    break;
+                                } else if(jPix2>width){
+                                    break outerFor;
+                                }
+                                var x2 = iPix2*4*width + 4*jPix2;
+                                c.data[x2] = rAvg;
+                                c.data[x2+1] = gAvg;
+                                c.data[x2+2] = bAvg;
+                                c.data[x2+3] = aAvg;
+                            }
+                        }
+                    }
+                }
+                ctx.putImageData(c,0,0);
+                return canvas.toDataURL();
+            }
+        })();
+
+         
+    </script>  
+
+    <!-- 邮箱订阅功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletterForm');
+            
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const emailInput = this.querySelector('.newsletter-input');
+                    const email = emailInput.value.trim();
+                    
+                    if (email) {
+                        // 这里可以添加实际的订阅逻辑，比如发送到后端API
+                        alert('感谢您的订阅！您将收到使用指南、使用案例和会员信息。');
+                        emailInput.value = '';
+                        
+                        // 示例：可以发送到后端
+                        // fetch('/api/subscribe', {
+                        //     method: 'POST',
+                        //     headers: { 'Content-Type': 'application/json' },
+                        //     body: JSON.stringify({ email: email })
+                        // })
+                        // .then(response => response.json())
+                        // .then(data => {
+                        //     alert('感谢您的订阅！');
+                        //     emailInput.value = '';
+                        // })
+                        // .catch(error => {
+                        //     alert('订阅失败。请重试。');
+                        // });
+                    }
+                });
+            }
+        });
+    </script>  
+
+    <!-- Shared Auth Module -->
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if (window.AppAuth && typeof window.AppAuth.init === 'function') {
+                window.AppAuth.init({
+                    loginButtonId: 'loginBtn',
+                    loginLabelId: 'loginLabel'
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
